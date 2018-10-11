@@ -1,0 +1,38 @@
+{
+  "name": "@phnt/gln.client-shared",
+  "description": "Typescript models for project",
+  "module": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "scripts": {
+    "build": "npm run prepublishOnly",
+    "clear-lib": "rimraf dist",
+    "ngc-build": "ngc -p ./tsconfig.json",
+    "prepublishOnly": "npm run clear-lib && npm run ngc-build && gulp"
+  },
+  "author": "Plymouth Software Develoment Teams",
+  "license": "ISC",
+  "optionalDependencies": {
+    "@phnt/summa.authentication": "~2"
+  },
+  "devDependencies": {
+    "@angular/common": "5.2.9",
+    "@angular/compiler": "5.2.9",
+    "@angular/compiler-cli": "5.2.9",
+    "@angular/core": "5.2.9",
+    "@angular/forms": "5.2.9",
+    "@angular/http": "5.2.9",
+    "@angular/platform-browser": "5.2.9",
+    "@angular/platform-browser-dynamic": "5.2.9",
+    "@angular/router": "5.2.9",
+    "del": "^3.0.0",
+    "fs": "0.0.1-security",
+    "glob": "^7.1.2",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
+    "path": "^0.12.7",
+    "rxjs": "^5.5.7",
+    "typescript": "2.6.2",
+    "zone.js": "^0.8.20",
+    "rimraf": "^2.6.1"
+  }
+}

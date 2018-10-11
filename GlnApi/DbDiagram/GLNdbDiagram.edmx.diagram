@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="139a2ca52f01448883ae27406a66e531" Name="Diagram1" DisplayType="true" ZoomLevel="95" >
+        <EntityTypeShape EntityType="GLNdbDiagram.Address" Width="3.25" PointX="8" PointY="0.5" />
+        <EntityTypeShape EntityType="GLNdbDiagram.PrimaryContacts" Width="3.25" PointX="0.5" PointY="4.5" />
+        <EntityTypeShape EntityType="GLNdbDiagram.Directorate" Width="2.25" PointX="11.875" PointY="0.5" />
+        <EntityTypeShape EntityType="GLNdbDiagram.AdditionalContacts" Width="3.25" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="GLNdbDiagram.Extensions" Width="3.25" PointX="4.5" PointY="9.125" />
+        <EntityTypeShape EntityType="GLNdbDiagram.Division" Width="3.25" PointX="0.5" PointY="8.625" />
+        <EntityTypeShape EntityType="GLNdbDiagram.GlnAssociation" Width="2.875" PointX="8.375" PointY="7.75" />
+        <EntityTypeShape EntityType="GLNdbDiagram.Gln" Width="2.75" PointX="4.625" PointY="0.5" />
+        <AssociationConnector Association="GLNdbDiagram.FK_BarcodeAddress" />
+        <AssociationConnector Association="GLNdbDiagram.FK_BarcodeExtensions" />
+        <AssociationConnector Association="GLNdbDiagram.FK_BarcodeContact" />
+        <EntityTypeShape EntityType="GLNdbDiagram.Ipr" Width="3.25" PointX="8" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

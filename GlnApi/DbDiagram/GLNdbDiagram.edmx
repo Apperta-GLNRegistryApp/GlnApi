@@ -1,0 +1,583 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GLNdbDiagram.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdditionalContacts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="System" Type="nvarchar" MaxLength="250" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Salutation" Type="nvarchar" MaxLength="50" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="200" />
+          <Property Name="TrustUsername" Type="nvarchar" MaxLength="200" />
+          <Property Name="NotificationSubscriber" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Addresses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AddressLineOne" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="AddressLineTwo" Type="nvarchar" MaxLength="500" />
+          <Property Name="AddressLineThree" Type="nvarchar" MaxLength="500" />
+          <Property Name="AddressLineFour" Type="nvarchar" MaxLength="500" />
+          <Property Name="City" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="RegionCounty" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Postcode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Level" Type="smallint" Nullable="false" />
+          <Property Name="Room" Type="nvarchar" MaxLength="200" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="DeliveryNote" Type="nvarchar(max)" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Directorates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Active" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Divisions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Active" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Extensions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExtensionNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DescriptionPurpose" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="ExtendingGln" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ExtendingGlnDescription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BarcodeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GlnAssociations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GlnId1" Type="int" Nullable="false" />
+          <Property Name="GlnId2" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Glns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FriendlyDescriptionPurpose" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="OwnGln" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParentGln" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="UseParentAddress" Type="bit" Nullable="false" />
+          <Property Name="Verified" Type="bit" />
+          <Property Name="FunctionalType" Type="bit" Nullable="false" />
+          <Property Name="LegalType" Type="bit" Nullable="false" />
+          <Property Name="DigitalType" Type="bit" Nullable="false" />
+          <Property Name="PhysicalType" Type="bit" Nullable="false" />
+          <Property Name="Public" Type="bit" Nullable="false" />
+          <Property Name="Assigned" Type="bit" Nullable="false" />
+          <Property Name="AddressId" Type="int" Nullable="false" />
+          <Property Name="ContactId" Type="int" Nullable="false" />
+          <Property Name="SuspensionReason" Type="nvarchar(max)" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="NumberOfChildren" Type="int" Nullable="false" />
+          <Property Name="TrustActive" Type="bit" Nullable="false" />
+          <Property Name="SuspendedBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="Primary" Type="bit" Nullable="false" />
+          <Property Name="ParentDescriptionPurpose" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SuspensionDate" Type="datetime" Nullable="false" />
+          <Property Name="TruthDescriptionPurpose" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="AlternativeSystemIsTruth" Type="bit" Nullable="false" />
+          <Property Name="AlternativeSystemPK" Type="nvarchar(max)" />
+          <Property Name="AlternativeSystemOfTruthName" Type="nvarchar" MaxLength="255" />
+          <Property Name="TierLevel" Type="int" />
+          <Property Name="Department" Type="nvarchar" MaxLength="500" />
+          <Property Name="Function" Type="nvarchar" MaxLength="250" />
+          <Property Name="LastUpdate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Ipr">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IprName" Type="nvarchar" MaxLength="100" />
+          <Property Name="IprImageAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="PrimaryContacts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Function" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Salutation" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="ForPhysicals" Type="bit" />
+          <Property Name="ForFunctionals" Type="bit" />
+          <Property Name="ForLegals" Type="bit" />
+          <Property Name="ForDigitals" Type="bit" />
+        </EntityType>
+        <Association Name="FK_BarcodeAddress">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="Glns" Type="Self.Glns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Glns">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BarcodeContact">
+          <End Role="PrimaryContacts" Type="Self.PrimaryContacts" Multiplicity="1" />
+          <End Role="Glns" Type="Self.Glns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrimaryContacts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Glns">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BarcodeExtensions">
+          <End Role="Glns" Type="Self.Glns" Multiplicity="1" />
+          <End Role="Extensions" Type="Self.Extensions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Glns">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Extensions">
+              <PropertyRef Name="BarcodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GLNdbDiagramStoreContainer">
+          <EntitySet Name="AdditionalContacts" EntityType="Self.AdditionalContacts" Schema="GLNREGISTRY" store:Type="Tables" />
+          <EntitySet Name="Addresses" EntityType="Self.Addresses" Schema="GLNREGISTRY" store:Type="Tables" />
+          <EntitySet Name="Directorates" EntityType="Self.Directorates" Schema="GLNREGISTRY" store:Type="Tables" />
+          <EntitySet Name="Divisions" EntityType="Self.Divisions" Schema="GLNREGISTRY" store:Type="Tables" />
+          <EntitySet Name="Extensions" EntityType="Self.Extensions" Schema="GLNREGISTRY" store:Type="Tables" />
+          <EntitySet Name="GlnAssociations" EntityType="Self.GlnAssociations" Schema="GLNREGISTRY" store:Type="Tables" />
+          <EntitySet Name="Glns" EntityType="Self.Glns" Schema="GLNREGISTRY" store:Type="Tables" />
+          <EntitySet Name="Ipr" EntityType="Self.Ipr" Schema="GLNREGISTRY" store:Type="Tables" />
+          <EntitySet Name="PrimaryContacts" EntityType="Self.PrimaryContacts" Schema="GLNREGISTRY" store:Type="Tables" />
+          <AssociationSet Name="FK_BarcodeAddress" Association="Self.FK_BarcodeAddress">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Glns" EntitySet="Glns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BarcodeContact" Association="Self.FK_BarcodeContact">
+            <End Role="PrimaryContacts" EntitySet="PrimaryContacts" />
+            <End Role="Glns" EntitySet="Glns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BarcodeExtensions" Association="Self.FK_BarcodeExtensions">
+            <End Role="Glns" EntitySet="Glns" />
+            <End Role="Extensions" EntitySet="Extensions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GLNdbDiagram" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="GLNdbDiagramContainer" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+          <EntitySet Name="Addresses" EntityType="GLNdbDiagram.Address" />
+          <EntitySet Name="PrimaryContacts" EntityType="GLNdbDiagram.PrimaryContacts" />
+          <EntitySet Name="Directorates" EntityType="GLNdbDiagram.Directorate" />
+          <EntitySet Name="AdditionalContacts" EntityType="GLNdbDiagram.AdditionalContacts" />
+          <EntitySet Name="Extensions" EntityType="GLNdbDiagram.Extensions" />
+          <EntitySet Name="Divisions" EntityType="GLNdbDiagram.Division" />
+          <EntitySet Name="GlnAssociations" EntityType="GLNdbDiagram.GlnAssociation" />
+          <EntitySet Name="Glns" EntityType="GLNdbDiagram.Gln" />
+          <AssociationSet Name="FK_BarcodeAddress" Association="GLNdbDiagram.FK_BarcodeAddress">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Gln" EntitySet="Glns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BarcodeExtensions" Association="GLNdbDiagram.FK_BarcodeExtensions">
+            <End Role="Gln" EntitySet="Glns" />
+            <End Role="Extensions" EntitySet="Extensions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BarcodeContact" Association="GLNdbDiagram.FK_BarcodeContact">
+            <End Role="PrimaryContacts" EntitySet="PrimaryContacts" />
+            <End Role="Gln" EntitySet="Glns" />
+          </AssociationSet>
+          <EntitySet Name="Iprs" EntityType="GLNdbDiagram.Ipr" />
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="AddressLineOne" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="AddressLineTwo" Type="String" Nullable="true" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="AddressLineThree" Type="String" Nullable="true" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="AddressLineFour" Type="String" Nullable="true" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="RegionCounty" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Postcode" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Level" Type="Int16" Nullable="false" />
+          <Property Name="Room" Type="String" Nullable="true" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="DeliveryNote" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" DefaultValue="0" />
+          <NavigationProperty Name="Glns" Relationship="GLNdbDiagram.FK_BarcodeAddress" FromRole="Address" ToRole="Gln" />
+        </EntityType>
+        <EntityType Name="PrimaryContacts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Email" Type="String" Nullable="false" Unicode="true" FixedLength="false" MaxLength="200" />
+          <Property Name="Function" Type="String" Nullable="false" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="Salutation" Type="String" Nullable="true" Unicode="true" FixedLength="false" MaxLength="50" />
+          <Property Name="Telephone" Type="String" Nullable="false" Unicode="true" FixedLength="false" MaxLength="50" />
+          <Property Name="Fax" Type="String" Nullable="true" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" DefaultValue="0" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Glns" Relationship="GLNdbDiagram.FK_BarcodeContact" FromRole="PrimaryContacts" ToRole="Gln" />
+          <Property Name="ForPhysicals" Type="Boolean" />
+          <Property Name="ForFunctionals" Type="Boolean" />
+          <Property Name="ForLegals" Type="Boolean" />
+          <Property Name="ForDigitals" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Directorate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Active" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdditionalContacts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" Unicode="true" FixedLength="false" MaxLength="200" />
+          <Property Name="System" Type="String" Nullable="true" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Telephone" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Fax" Type="String" Nullable="true" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Salutation" Type="String" Nullable="true" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" DefaultValue="0" />
+          <Property Name="Role" Type="String" Nullable="true" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="TrustUsername" Type="String" Nullable="true" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="NotificationSubscriber" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Extensions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExtensionNumber" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DescriptionPurpose" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="ExtendingGln" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ExtendingGlnDescription" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="BarcodeId" Type="Int32" Nullable="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <NavigationProperty Name="Gln" Relationship="GLNdbDiagram.FK_BarcodeExtensions" FromRole="Extensions" ToRole="Gln" />
+        </EntityType>
+        <EntityType Name="Division">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GlnAssociation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GlnId1" Type="Int32" Nullable="false" />
+          <Property Name="GlnId2" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gln">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FriendlyDescriptionPurpose" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="OwnGln" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParentGln" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UseParentAddress" Type="Boolean" Nullable="false" />
+          <Property Name="Verified" Type="Boolean" />
+          <Property Name="FunctionalType" Type="Boolean" Nullable="false" />
+          <Property Name="LegalType" Type="Boolean" Nullable="false" />
+          <Property Name="DigitalType" Type="Boolean" Nullable="false" />
+          <Property Name="PhysicalType" Type="Boolean" Nullable="false" />
+          <Property Name="Public" Type="Boolean" Nullable="false" />
+          <Property Name="Assigned" Type="Boolean" Nullable="false" />
+          <Property Name="AddressId" Type="Int32" Nullable="false" />
+          <Property Name="ContactId" Type="Int32" Nullable="false" />
+          <Property Name="SuspensionReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="NumberOfChildren" Type="Int32" Nullable="false" />
+          <Property Name="TrustActive" Type="Boolean" Nullable="false" />
+          <Property Name="SuspendedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Primary" Type="Boolean" Nullable="false" />
+          <Property Name="ParentDescriptionPurpose" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SuspensionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TruthDescriptionPurpose" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AlternativeSystemIsTruth" Type="Boolean" Nullable="false" />
+          <Property Name="AlternativeSystemPK" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AlternativeSystemOfTruthName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Function" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Address" Relationship="GLNdbDiagram.FK_BarcodeAddress" FromRole="Gln" ToRole="Address" />
+          <NavigationProperty Name="Extensions" Relationship="GLNdbDiagram.FK_BarcodeExtensions" FromRole="Gln" ToRole="Extensions" />
+          <NavigationProperty Name="PrimaryContact" Relationship="GLNdbDiagram.FK_BarcodeContact" FromRole="Gln" ToRole="PrimaryContacts" />
+          <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+          <Property Name="TierLevel" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_BarcodeAddress">
+          <End Type="GLNdbDiagram.Address" Role="Address" Multiplicity="1" />
+          <End Type="GLNdbDiagram.Gln" Role="Gln" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gln">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BarcodeExtensions">
+          <End Type="GLNdbDiagram.Gln" Role="Gln" Multiplicity="1" />
+          <End Type="GLNdbDiagram.Extensions" Role="Extensions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gln">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Extensions">
+              <PropertyRef Name="BarcodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BarcodeContact">
+          <End Type="GLNdbDiagram.PrimaryContacts" Role="PrimaryContacts" Multiplicity="1" />
+          <End Type="GLNdbDiagram.Gln" Role="Gln" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrimaryContacts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gln">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Ipr">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IprName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IprImageAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GLNdbDiagramStoreContainer" CdmEntityContainer="GLNdbDiagramContainer">
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="IsTypeOf(GLNdbDiagram.Address)">
+        <MappingFragment StoreEntitySet="Addresses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AddressLineOne" ColumnName="AddressLineOne" />
+          <ScalarProperty Name="AddressLineTwo" ColumnName="AddressLineTwo" />
+          <ScalarProperty Name="AddressLineThree" ColumnName="AddressLineThree" />
+          <ScalarProperty Name="AddressLineFour" ColumnName="AddressLineFour" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="RegionCounty" ColumnName="RegionCounty" />
+          <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="DeliveryNote" ColumnName="DeliveryNote" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrimaryContacts">
+      <EntityTypeMapping TypeName="IsTypeOf(GLNdbDiagram.PrimaryContacts)">
+        <MappingFragment StoreEntitySet="PrimaryContacts">
+          <ScalarProperty Name="ForDigitals" ColumnName="ForDigitals" />
+                <ScalarProperty Name="ForLegals" ColumnName="ForLegals" />
+                <ScalarProperty Name="ForFunctionals" ColumnName="ForFunctionals" />
+                <ScalarProperty Name="ForPhysicals" ColumnName="ForPhysicals" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Function" ColumnName="Function" />
+          <ScalarProperty Name="Salutation" ColumnName="Salutation" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Directorates">
+      <EntityTypeMapping TypeName="IsTypeOf(GLNdbDiagram.Directorate)">
+        <MappingFragment StoreEntitySet="Directorates">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdditionalContacts">
+      <EntityTypeMapping TypeName="IsTypeOf(GLNdbDiagram.AdditionalContacts)">
+        <MappingFragment StoreEntitySet="AdditionalContacts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="System" ColumnName="System" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Salutation" ColumnName="Salutation" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="TrustUsername" ColumnName="TrustUsername" />
+          <ScalarProperty Name="NotificationSubscriber" ColumnName="NotificationSubscriber" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Extensions">
+      <EntityTypeMapping TypeName="IsTypeOf(GLNdbDiagram.Extensions)">
+        <MappingFragment StoreEntitySet="Extensions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ExtensionNumber" ColumnName="ExtensionNumber" />
+          <ScalarProperty Name="DescriptionPurpose" ColumnName="DescriptionPurpose" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="ExtendingGln" ColumnName="ExtendingGln" />
+          <ScalarProperty Name="ExtendingGlnDescription" ColumnName="ExtendingGlnDescription" />
+          <ScalarProperty Name="BarcodeId" ColumnName="BarcodeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Divisions">
+      <EntityTypeMapping TypeName="IsTypeOf(GLNdbDiagram.Division)">
+        <MappingFragment StoreEntitySet="Divisions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GlnAssociations">
+      <EntityTypeMapping TypeName="IsTypeOf(GLNdbDiagram.GlnAssociation)">
+        <MappingFragment StoreEntitySet="GlnAssociations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GlnId1" ColumnName="GlnId1" />
+          <ScalarProperty Name="GlnId2" ColumnName="GlnId2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Glns">
+      <EntityTypeMapping TypeName="IsTypeOf(GLNdbDiagram.Gln)">
+        <MappingFragment StoreEntitySet="Glns">
+          <ScalarProperty Name="TierLevel" ColumnName="TierLevel" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FriendlyDescriptionPurpose" ColumnName="FriendlyDescriptionPurpose" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="OwnGln" ColumnName="OwnGln" />
+          <ScalarProperty Name="ParentGln" ColumnName="ParentGln" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="UseParentAddress" ColumnName="UseParentAddress" />
+          <ScalarProperty Name="Verified" ColumnName="Verified" />
+          <ScalarProperty Name="FunctionalType" ColumnName="FunctionalType" />
+          <ScalarProperty Name="LegalType" ColumnName="LegalType" />
+          <ScalarProperty Name="DigitalType" ColumnName="DigitalType" />
+          <ScalarProperty Name="PhysicalType" ColumnName="PhysicalType" />
+          <ScalarProperty Name="Public" ColumnName="Public" />
+          <ScalarProperty Name="Assigned" ColumnName="Assigned" />
+          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+          <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+          <ScalarProperty Name="SuspensionReason" ColumnName="SuspensionReason" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="NumberOfChildren" ColumnName="NumberOfChildren" />
+          <ScalarProperty Name="TrustActive" ColumnName="TrustActive" />
+          <ScalarProperty Name="SuspendedBy" ColumnName="SuspendedBy" />
+          <ScalarProperty Name="Primary" ColumnName="Primary" />
+          <ScalarProperty Name="ParentDescriptionPurpose" ColumnName="ParentDescriptionPurpose" />
+          <ScalarProperty Name="SuspensionDate" ColumnName="SuspensionDate" />
+          <ScalarProperty Name="TruthDescriptionPurpose" ColumnName="TruthDescriptionPurpose" />
+          <ScalarProperty Name="AlternativeSystemIsTruth" ColumnName="AlternativeSystemIsTruth" />
+          <ScalarProperty Name="AlternativeSystemPK" ColumnName="AlternativeSystemPK" />
+          <ScalarProperty Name="AlternativeSystemOfTruthName" ColumnName="AlternativeSystemOfTruthName" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Function" ColumnName="Function" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+          <EntitySetMapping Name="Iprs">
+            <EntityTypeMapping TypeName="GLNdbDiagram.Ipr">
+              <MappingFragment StoreEntitySet="Ipr">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="IprImageAddress" ColumnName="IprImageAddress" />
+                <ScalarProperty Name="IprName" ColumnName="IprName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer>
+    <edmx:Connection>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <edmx:DesignerProperty Name="EnablePluralization" Value="True" />
+        <edmx:DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <edmx:DesignerProperty Name="DefaultDatabaseSchema" Value="GLNREGISTRY" />
+        <edmx:DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <edmx:DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
